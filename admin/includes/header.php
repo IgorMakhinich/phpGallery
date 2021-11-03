@@ -14,3 +14,5 @@
 </head>
 
 <body class="sb-nav-fixed">
+
+<?php echo "header connected";?>

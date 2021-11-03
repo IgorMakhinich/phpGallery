@@ -8,23 +8,29 @@
             </ol>
             <?php
 
-//            $result_set = User::find_all_users();
-//
-//            while ($row = mysqli_fetch_array($result_set)) {
-//                echo "ID: " . $row['id'] . ", Name: " . $row['username'] . "<br>";
-//            }
+            //            $result_set = User::find_all_users();
+            //
+            //            while ($row = mysqli_fetch_array($result_set)) {
+            //                echo "ID: " . $row['id'] . ", Name: " . $row['username'] . "<br>";
+            //            }
 
-//            echo '<hr>';
-//
-//            $user = User::find_user_by_id(1);
-//            echo "User id {$user['id']} is: <br>";
-//            print_r($user);
+            //            echo '<hr>';
+            //
+            //            $user = User::find_user_by_id(1);
+            //            echo "User id {$user['id']} is: <br>";
+            //            print_r($user);
 
             $users = User::find_all_users();
-
-            foreach ($users as $user){
+            // $users = User::find_user_by_id(2);
+            foreach ($users as $user) {
                 echo $user->username . "<br>";
             }
+
+            echo '<hr>';
+
+            $user = User::find_user_by_id(2);
+            // echo "id: {$user->id} name:{$user->username} firstname:{$user->first_name}";
+            print_r($user);
 
 
             ?>
