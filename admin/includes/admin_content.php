@@ -4,14 +4,22 @@
       <div class="container-fluid px-4">
          <h1 class="mt-4">Dashboard</h1>
          <?php 
-            $user = new User();
+            // $user = new User();
 
-            $user->username = "Test_username1";
-            $user->password = "Test_password1";
-            $user->first_name = "Test_first_name1";
-            $user->last_name = "Test_last_name1";
+            // $user->username = "Petya";
+            // $user->password = "123";
+            // $user->first_name = "Patochnik";
+            // $user->last_name = "Petrov";
 
-            $user->create();
+            // $user->save();
+
+            $user = User::find_user_by_id(5);
+            $user->username = "Mar'yan";
+            $user->password = "123";
+            $user->first_name = "Mar'yan";
+            $user->last_name = "Testovich";
+            $user->save();
+
          ?>
          <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active"><a href="index.php">Dashboard</a></li>
