@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Сен 30 2021 г., 15:15
+-- Время создания: Ноя 12 2021 г., 13:53
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
--- Версия PHP: 5.6.40-38+ubuntu18.04.1+deb.sury.org+1
+-- Версия PHP: 5.6.40-55+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,21 @@ SET time_zone = "+00:00";
 --
 -- База данных: `gallery`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `size` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -40,11 +55,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VALUES
 (1, 'user1', '123', 'Jhon', 'Doe'),
-(2, 'user2', '123', 'Jhon2', 'Doe2');
+(2, 'user2', '123', 'Jhon2', 'Doe2'),
+(3, 'Test_username', 'Test_password', 'Test_first_name', 'Test_last_name'),
+(4, 'Test_username1', 'Test_password1', 'Test_first_name1', 'Test_last_name1');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -57,10 +80,15 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
