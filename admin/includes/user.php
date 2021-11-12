@@ -1,6 +1,6 @@
 <?php
 
-class User
+class User extends Db_object
 {
    protected static $db_table = "users";
    protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
@@ -11,17 +11,6 @@ class User
    public $last_name;
 
 
-   public static function find_this_query($sql)
-   {
-      global $database;
-      $result_set = $database->query($sql);
-      $the_object_array = array();
-      while ($row = mysqli_fetch_array($result_set)) {
-         $the_object_array[] = self::instantiation($row);
-      }
-      return $the_object_array;
-   }
-
 
    public static function verify_user($username, $password)
    {
@@ -30,23 +19,10 @@ class User
       $username = $database->escape_string($username);
       $password = $database->escape_string($password);
 
-      $sql = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
+      $sql = "SELECT * FROM " . self::$db_table . " WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
 
       $the_result_array = self::find_this_query($sql);
       return !empty($the_result_array) ? array_shift($the_result_array) : false;
-   }
-
-
-   public static function instantiation($the_record)
-   {
-      $the_object = new self;
-
-      foreach ($the_record as $property => $value) {
-         if ($the_object->has_the_property($property)) {
-            $the_object->$property = $value;
-         }
-      }
-      return $the_object;
    }
 
 
@@ -82,27 +58,6 @@ class User
       }
 
       return $clean_properties;
-   }
-
-
-   public static function find_all_users()
-   {
-      //        global $database;
-      //        return $database->query("SELECT * FROM users");
-      return self::find_this_query("SELECT * FROM users");
-   }
-
-
-   public static function find_user_by_id($id)
-   {
-      $the_result_array = self::find_this_query("SELECT * FROM users WHERE id = $id LIMIT 1");
-      //        if(!empty($the_result_array)){
-      //            $first_item = array_shift($the_result_array);
-      //            return $first_item;
-      //        } else {
-      //            return false;
-      //        }
-      return !empty($the_result_array) ? array_shift($the_result_array) : false;
    }
 
 
@@ -147,6 +102,7 @@ class User
 
       return (mysqli_affected_rows($database->connection) == 1) ? true : false;
    }
+
 
    public function delete()
    {
