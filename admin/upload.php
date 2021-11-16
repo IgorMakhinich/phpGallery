@@ -1,5 +1,9 @@
 <?php include "includes/header.php"; ?>
 
+<?php if (!$session->is_signed_in()) {
+   redirect('login.php');
+} ?>
+
 <?php include "includes/top_nav.php"; ?>
 
 <div id="layoutSidenav">
@@ -8,10 +12,17 @@
       <main>
          <div class="container-fluid px-4">
             <h1 class="mt-4">Upload</h1>
-            <ol class="breadcrumb mb-4">
-               <li class="breadcrumb-item active"><a href="index.php">Dashboard</a></li>
-               <li class="breadcrumb-item"><a href="#">Blank page</a></li>
-            </ol>
+            <div class="col-md-6">
+               <form action="" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                     <input type="text" name="title" class="form-control">
+                  </div>
+                  <div class="form-group">
+                     <input type="file" name="file_upload">
+                  </div>
+                  <input type="submit" name="submit" class="form-control">
+               </form>
+            </div>
          </div>
       </main>
       <?php include "sub_footer.php"; ?>
