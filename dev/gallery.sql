@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 12 2021 г., 13:53
+-- Время создания: Ноя 18 2021 г., 15:14
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версия PHP: 5.6.40-55+ubuntu18.04.1+deb.sury.org+1
 
@@ -27,13 +27,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `photos` (
-  `id` int(11) NOT NULL,
+  `photo_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `filename` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `size` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `photos`
+--
+
+INSERT INTO `photos` (`photo_id`, `title`, `description`, `filename`, `type`, `size`) VALUES
+(1, 'first_photo', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, nulla odit neque doloremque veritatis laborum adipisci soluta voluptates cupiditate expedita! Omnis, ex rerum. Consequatur similique cupiditate quos rem nihil vitae.', 'image.jpg', 'image', 11),
+(2, 'test_photo', 'test_photo_descr', 'image2.jpg', 'image', 10),
+(3, '123', '', 'payment.png', 'image/png', 15308);
 
 -- --------------------------------------------------------
 
@@ -67,7 +76,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VA
 -- Индексы таблицы `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`photo_id`);
 
 --
 -- Индексы таблицы `users`
@@ -83,7 +92,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --

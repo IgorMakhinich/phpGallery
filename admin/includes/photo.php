@@ -29,7 +29,7 @@ class Photo extends Db_object
 
    public function set_file($file)
    {
-      if (empty($file) || !$file || is_array($file)) {
+      if (empty($file) || !$file || !is_array($file)) {
          $this->errors[] = "There was no file upload here";
          return false;
       } elseif ($file['error'] != 0) {
