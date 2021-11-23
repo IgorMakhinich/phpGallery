@@ -11,7 +11,7 @@
             // $user->last_name = "Petrov";
             // $user->save();
 
-            // $user = User::find_by_id(5);
+            // $user = User::find_by_id(4);
             // $user->delete();
             // print_r($user);
             // $user->delete();
@@ -29,14 +29,16 @@
             // $photo->size = "10";
             // $photo->save();
 
-            $photos = Photo::find_all();
-            foreach ($photos as $photo){
-               echo "{$photo->title} | {$photo->photo_id} <br>";
-            }
+            $photo = Photo::find_by_id(4);
+            print_r($photo);
+            // $photos = Photo::find_all();
+            // foreach ($photos as $photo){
+            //    echo "{$photo->title} | {$photo->id} <br>";
+            // }
 
-            echo SITE_ROOT;
-            echo "<br>";
-            echo INCLUDES_PATH;
+            // echo SITE_ROOT;
+            // echo "<br>";
+            // echo INCLUDES_PATH;
 
             
 

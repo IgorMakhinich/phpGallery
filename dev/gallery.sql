@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 18 2021 г., 15:14
+-- Время создания: Ноя 23 2021 г., 14:36
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
--- Версия PHP: 5.6.40-55+ubuntu18.04.1+deb.sury.org+1
+-- Версия PHP: 5.6.40-57+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `photos` (
-  `photo_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `filename` varchar(255) NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE `photos` (
 -- Дамп данных таблицы `photos`
 --
 
-INSERT INTO `photos` (`photo_id`, `title`, `description`, `filename`, `type`, `size`) VALUES
-(1, 'first_photo', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, nulla odit neque doloremque veritatis laborum adipisci soluta voluptates cupiditate expedita! Omnis, ex rerum. Consequatur similique cupiditate quos rem nihil vitae.', 'image.jpg', 'image', 11),
-(2, 'test_photo', 'test_photo_descr', 'image2.jpg', 'image', 10),
-(3, '123', '', 'payment.png', 'image/png', 15308);
+INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) VALUES
+(6, '3', '', 'images-3.jpg', 'image/jpeg', 18096),
+(7, '5', '', 'images-5.jpg', 'image/jpeg', 33192),
+(8, '6', '', 'images-6.jpg', 'image/jpeg', 21886);
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VA
 -- Индексы таблицы `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`photo_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -92,7 +92,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
