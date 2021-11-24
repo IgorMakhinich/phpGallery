@@ -2,11 +2,26 @@
 
 <?php if (!$session->is_signed_in()) {
    redirect('login.php');
-} ?>
+}
+?>
 
 <?php
+if (empty($_GET['id'])) {
+   redirect("photos.php");
+} else {
+   $photo = Photo::find_by_id($_GET['id']);
+}
+
+
 if (isset($_POST['update'])) {
-   echo "it wprls123";
+   if ($photo) {
+      $photo->title = $_POST['title'];
+      $photo->caption = $_POST['caption'];
+      $photo->alternate_text = $_POST['alternate_text'];
+      $photo->description = $_POST['photo-description'];
+
+      $photo->save();
+   }
 }
 ?>
 
@@ -22,31 +37,36 @@ if (isset($_POST['update'])) {
                <div class="row">
                   <div class="col-md-8">
                      <div class="form-group">
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" class="form-control" value="<?php echo $photo->title; ?>">
+                     </div>
+                     <div class="form-group img-thumbnail d-flex justify-content-center">
+                        <a href="#"><img src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>"></a>
                      </div>
                      <div class="form-group">
                         <label for="caption">Caption</label>
-                        <input type="text" name="caption" class="form-control">
+                        <input type="text" name="caption" class="form-control" value="<?php echo $photo->caption; ?>">
                      </div>
                      <div class="form-group">
                         <label for="caption">Alternate Text</label>
-                        <input type="text" name="alternate_text" class="form-control">
+                        <input type="text" name="alternate_text" class="form-control" value="<?php echo $photo->alternate_text; ?>">
                      </div>
                      <div class="form-group">
-                        <label for="caption">Description</label>
-                        <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+                        <label for="photo-description">Description</label>
+                        <textarea name="photo-description" id="" cols="30" rows="10" class="form-control"><?php echo $photo->description; ?></textarea>
+                        
                      </div>
                   </div>
 
                   <div class="col-md-4">
                      <div class="photo-info-box">
-                        <div class="info-box-header">
-                           <h4>Save <span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>
+                        <div class="info-box-header d-flex justify-content-between">
+                           <h4>Save</h4>
+                           <span id="toggle" class="float-right"><i class="fas fa-2x fa-angle-up"></i></span>
                         </div>
                         <div class="inside">
                            <div class="box-inner">
                               <p class="text">
-                                 <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
+                                 <i class="far fa-calendar-alt"></i> Uploaded on: April 22, 2030 @ 5:26
                               </p>
                               <p class="text ">
                                  Photo Id: <span class="data photo_id_box">34</span>
@@ -61,7 +81,7 @@ if (isset($_POST['update'])) {
                                  File Size: <span class="data">3245345</span>
                               </p>
                            </div>
-                           <div class="info-box-footer" style="display: flex; justify-content: space-evenly;">
+                           <div class="info-box-footer d-flex justify-content-evenly">
                               <div class="info-box-delete">
                                  <a href="delete_photo.php?id=<?php echo $photo->id; ?>" class="btn btn-danger btn-lg ">Delete</a>
                               </div>

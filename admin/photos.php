@@ -28,10 +28,10 @@
                      $photos = Photo::find_all();
                      foreach ($photos as $photo) : ?>
                         <tr>
-                           <td><img src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>" style="width: 120px;">
+                           <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>">
                               <div class="pictures_link">
-                                 <a href="delete_photo.php?id=<?php echo $photo->id?>">Delete</a>
-                                 <a href="">Edit</a>
+                                 <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
+                                 <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
                                  <a href="">View</a>
                               </div>
                            </td>
