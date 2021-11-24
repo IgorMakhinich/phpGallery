@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 23 2021 г., 14:36
+-- Время создания: Ноя 24 2021 г., 14:07
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версия PHP: 5.6.40-57+ubuntu18.04.1+deb.sury.org+1
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `caption` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `filename` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -39,10 +40,10 @@ CREATE TABLE `photos` (
 -- Дамп данных таблицы `photos`
 --
 
-INSERT INTO `photos` (`id`, `title`, `description`, `filename`, `type`, `size`) VALUES
-(6, '3', '', 'images-3.jpg', 'image/jpeg', 18096),
-(7, '5', '', 'images-5.jpg', 'image/jpeg', 33192),
-(8, '6', '', 'images-6.jpg', 'image/jpeg', 21886);
+INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `type`, `size`) VALUES
+(6, '3', '', '', 'images-3.jpg', 'image/jpeg', 18096),
+(7, '5', '', '', 'images-5.jpg', 'image/jpeg', 33192),
+(8, '6', '', '', 'images-6.jpg', 'image/jpeg', 21886);
 
 -- --------------------------------------------------------
 
