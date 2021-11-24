@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Ноя 24 2021 г., 14:07
+-- Время создания: Ноя 24 2021 г., 23:38
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
--- Версия PHP: 5.6.40-57+ubuntu18.04.1+deb.sury.org+1
+-- Версия PHP: 5.6.40-55+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,6 +32,7 @@ CREATE TABLE `photos` (
   `caption` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `filename` varchar(255) NOT NULL,
+  `alternate_text` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `size` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,10 +41,9 @@ CREATE TABLE `photos` (
 -- Дамп данных таблицы `photos`
 --
 
-INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `type`, `size`) VALUES
-(6, '3', '', '', 'images-3.jpg', 'image/jpeg', 18096),
-(7, '5', '', '', 'images-5.jpg', 'image/jpeg', 33192),
-(8, '6', '', '', 'images-6.jpg', 'image/jpeg', 21886);
+INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`) VALUES
+(6, '3 title new', '3 caption new', '<p>test</p>\r\n', 'images-3.jpg', '3 alternate text new', 'image/jpeg', 18096),
+(10, 'img37', 'caption37', '<p>descr37</p>\r\n', 'images-37.jpg', 'alt37', 'image/jpeg', 20381);
 
 -- --------------------------------------------------------
 
@@ -65,9 +65,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VALUES
 (1, 'user1', '123', 'Jhon', 'Doe'),
-(2, 'user2', '123', 'Jhon2', 'Doe2'),
-(3, 'Test_username', 'Test_password', 'Test_first_name', 'Test_last_name'),
-(4, 'Test_username1', 'Test_password1', 'Test_first_name1', 'Test_last_name1');
+(3, 'secondUser', '123', 'Test', 'Testovich'),
+(4, 'vasya', '123', 'Vasiliy', 'Pupkin'),
+(5, 'Mar\'yan', '123', 'Mar\'yan', 'Testovich'),
+(6, 'Petya', '123', 'Patochnik', 'Petrov');
 
 --
 -- Индексы сохранённых таблиц
@@ -77,7 +78,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`) VA
 -- Индексы таблицы `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -93,12 +94,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
