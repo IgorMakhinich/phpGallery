@@ -99,4 +99,5 @@ if (isset($_POST['update'])) {
       <?php include "includes/sub_footer.php"; ?>
    </div>
 </div>
+<script src="ckeditor/ckeditor.js"></script>
 <?php include "includes/footer.php"; ?>
