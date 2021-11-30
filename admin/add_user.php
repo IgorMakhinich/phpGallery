@@ -6,6 +6,7 @@
 ?>
 
 <?php
+$message = "";
 $user = new User();
 
 if (isset($_POST['add'])) {
@@ -14,8 +15,14 @@ if (isset($_POST['add'])) {
       $user->first_name = $_POST['first_name'];
       $user->last_name = $_POST['last_name'];
       $user->password = $_POST['password'];
+      $user->set_file($_FILES['user_image']);
+      $user->save_user_photo();
+
       if ($user->save()) {
-         redirect('users.php');
+         $message = "User added succesfully";
+         header( "refresh:2;url=users.php" );
+      } else {
+         $message = join("<br>" . $user->errors);
       }
    }
 }
@@ -37,7 +44,7 @@ if (isset($_POST['add'])) {
                      </div>
                      <div class="form-group">
                         <label for="username">Userame</label>
-                        <input type="text" name="username" class="form-control">
+                        <input type="text" name="username" class="form-control" required>
                      </div>
                      <div class="form-group">
                         <label for="first_name">First Name</label>
@@ -49,10 +56,11 @@ if (isset($_POST['add'])) {
                      </div>
                      <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control" required>
                      </div>
                      <div class="info-box-update">
                         <input type="submit" name="add" value="Add" class="btn btn-primary float-end mt-2">
+                        <span class="float-start"><?php echo $message; ?></span>
                      </div>
                   </div>
                </div>

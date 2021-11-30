@@ -100,4 +100,7 @@ if (isset($_POST['update'])) {
    </div>
 </div>
 <script src="ckeditor/ckeditor.js"></script>
+<script>
+   CKEDITOR.replace('photo-description');
+</script>
 <?php include "includes/footer.php"; ?>
