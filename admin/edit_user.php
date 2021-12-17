@@ -18,8 +18,17 @@ if (isset($_POST['update'])) {
       $user->first_name = $_POST['first_name'];
       $user->last_name = $_POST['last_name'];
       $user->password = $_POST['password'];
-      $user->set_file($_FILES['user_image']);
-      $user->save_user_photo();
+
+      if (empty($_FILES['user_image'])) {
+         $user->save();
+      } else {
+         $user->set_file($_FILES['user_image']);
+         $user->save_user_photo();
+         $user->save();
+
+         redirect("edit_user.php?id={$user->id}");
+      }
+
 
       if ($user->save()) {
          $message = "User edited succesfully";
@@ -47,7 +56,7 @@ $message = "";
 
             <div class="row">
                <div class="col-md-6">
-                  <img src="<?php echo $user->image_path_placeholder(); ?>" alt="" class="img-responsive">
+                  <img src="<?php echo $user->image_path_placeholder(); ?>" alt="" class="img-responsive user_image">
                </div>
                <div class="col-md-6">
                   <form action="" method="POST" enctype="multipart/form-data">
@@ -71,6 +80,7 @@ $message = "";
                         <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>" required>
                      </div>
                      <div class="info-box-update">
+                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger float-start mt-2">Delete</a>
                         <input type="submit" name="update" value="update" class="btn btn-primary float-end mt-2">
                         <span class="float-start"><?php echo $message; ?></span>
                      </div>

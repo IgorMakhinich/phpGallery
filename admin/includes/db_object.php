@@ -2,6 +2,36 @@
 
 class Db_object
 {
+   public $errors = array();
+   public $uploads_error_array = array(
+      0 => 'There is no error, the file uploaded with success',
+      1 => 'Exceeds php.ini upload_max_filesize',
+      2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
+      3 => 'The uploaded file was only partially uploaded',
+      4 => 'No file was uploaded',
+      6 => 'Missing a temporary folder',
+      7 => 'Failed to write file to disk.',
+      8 => 'A PHP extension stopped the file upload.',
+   );
+
+
+   public function set_file($file)
+   {
+      if (empty($file) || !$file || !is_array($file)) {
+         $this->errors[] = "There was no file upload here";
+         return false;
+      } elseif ($file['error'] != 0) {
+         $this->errors[] = $this->uploads_error_array[$file['error']];
+         return false;
+      } else {
+         $this->user_image = basename($file['name']);
+         $this->tmp_path = $file['tmp_name'];
+         $this->type = $file['type'];
+         $this->size = $file['size'];
+      }
+   }
+
+   
    public static function find_all()
    {
       //        global $database;
@@ -12,7 +42,7 @@ class Db_object
 
    public static function find_by_id($id)
    {
-      global $databese;
+      global $database;
       $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1");
       //        if(!empty($the_result_array)){
       //            $first_item = array_shift($the_result_array);
