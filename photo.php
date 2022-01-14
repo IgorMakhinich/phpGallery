@@ -1,3 +1,10 @@
+<?php 
+if(isset($_POST['submit'])){
+   echo "Form Works";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,14 +50,67 @@
       <div class="row">
          <!-- Blog entries-->
          <div class="col-lg-8">
-            <!-- Featured blog post-->
-            <div class="card mb-4">
-               <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
-               <div class="card-body">
-                  <div class="small text-muted">January 1, 2021</div>
-                  <h2 class="card-title">Featured Post Title</h2>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-                  <a class="btn btn-primary" href="#!">Read more →</a>
+            <div class="row">
+               <!-- Featured blog post-->
+               <div class="card mb-4">
+                  <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                  <div class="card-body">
+                     <div class="small text-muted">January 1, 2021</div>
+                     <h2 class="card-title">Featured Post Title</h2>
+                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                     <a class="btn btn-primary" href="#!">Read more →</a>
+                  </div>
+                  <!-- Blog Comments -->
+
+                  <!-- Comments Form -->
+                  <div class="well">
+                     <h4>Leave a Comment:</h4>
+                     <form role="form" method="POST">
+                        <div class="form-group">
+                           <label for="author">Author</label>
+                           <input type="text" name="author" class="form-control">
+                        </div>
+                        <div class="form-group">
+                           <label for="body">Comment</label>
+                           <textarea class="form-control" name="body" rows="3"></textarea>
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary mt-5">Submit</button>
+                     </form>
+                  </div>
+
+                  <hr>
+
+                  <!-- Posted Comments -->
+
+                  <!-- Comment -->
+                  <div class="media d-flex">
+                     <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
+                     <div class="media-body">
+                        <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
+                        <h5 class="mt-0">Start Bootstrap</h5>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                     </div>
+                  </div>
+                  <hr>
+                  <!-- Comment -->
+                  <div class="media d-flex">
+                     <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
+                     <div class="media-body">
+                        <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
+                        <h5 class="mt-0">Start Bootstrap</h5>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <!-- Nested Comment -->
+                        <div class="media d-flex mt-3">
+                           <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
+                           <div class="media-body">
+                              <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
+                              <h5 class="mt-0">Nested Start Bootstrap</h5>
+                              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                           </div>
+                        </div>
+                        <!-- End Nested Comment -->
+                     </div>
+                  </div>
                </div>
             </div>
             <!-- Nested row for non-featured blog posts-->
