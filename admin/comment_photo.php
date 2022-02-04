@@ -4,6 +4,16 @@
    redirect('login.php');
 } ?>
 
+<?php 
+
+if (empty($_GET['id'])) {
+   redirect('photos.php');
+}
+
+$comments = Comment::find_the_comments($_GET['id']);
+
+?>
+
 <?php include "includes/top_nav.php"; ?>
 
 <div id="layoutSidenav">
@@ -11,7 +21,7 @@
    <div id="layoutSidenav_content">
       <main>
          <div class="container-fluid px-4">
-            <h1 class="mt-4">Comments</h1>
+            <h1 class="mt-4">Comment by photo</h1>
             <a href="add_user.php" class="btn btn-primary">Add Comment</a>
             <div class="col-md-12">
                <table class="table table-hover">
@@ -26,22 +36,21 @@
                   </thad>
                   <tbody>
                      <?php
-                     $comments = Comment::find_all();
                      foreach ($comments as $comment) : ?>
                         <tr>
                            <td><?php echo $comment->id; ?></td>
                            <td>
-                              <?php 
-                                 $photo = Photo::find_by_id($comment->photo_id);
+                              <?php
+                              $photo = Photo::find_by_id($comment->photo_id);
                               ?>
-                              <a href ="edit_photo.php?id=<?php echo $photo->id; ?>">
+                              <a href="edit_photo.php?id=<?php echo $photo->id; ?>">
                                  <img class="admin-user-thumbnail user_image" src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>">
                               </a>
                            </td>
                            <td>
                               <?php echo $comment->author; ?>
                               <div class="action_links">
-                                 <a href="delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                                 <a href="delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
                                  <a href="edit_comment.php?id=<?php echo $comment->id; ?>">Edit</a>
                               </div>
                            </td>

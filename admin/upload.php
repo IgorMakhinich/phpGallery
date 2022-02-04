@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
    $photo = new Photo();
    $photo->title = $_POST['title'];
    $photo->set_file($_FILES['file_upload']);
+   $photo->date = date('Y-m-d H:i:s');
    if($photo->save()){
       $message = "Photo upload succesfully";
    } else {

@@ -1,7 +1,29 @@
-<?php 
-if(isset($_POST['submit'])){
-   echo "Form Works";
+<?php
+
+require_once("admin/includes/init.php");
+
+if (empty($_GET['id'])) {
+   redirect("index.php");
 }
+
+$photo = Photo::find_by_id($_GET['id']);
+
+if (isset($_POST['submit'])) {
+   $author = trim($_POST['author']);
+   $body = trim($_POST['body']);
+   $new_comment = Comment::create_comment($photo->id, $author, $body);
+
+   if ($new_comment && $new_comment->save()) {
+      redirect("photo.php?id={$photo->id}");
+   } else {
+      $message = "There was some problems saving";
+   }
+} else {
+   $author = "";
+   $body = "";
+}
+
+$comments = Comment::find_the_comments($photo->id);
 
 ?>
 
@@ -81,36 +103,18 @@ if(isset($_POST['submit'])){
                   <hr>
 
                   <!-- Posted Comments -->
-
-                  <!-- Comment -->
-                  <div class="media d-flex">
-                     <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
-                     <div class="media-body">
-                        <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
-                        <h5 class="mt-0">Start Bootstrap</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                     </div>
-                  </div>
-                  <hr>
-                  <!-- Comment -->
-                  <div class="media d-flex">
-                     <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
-                     <div class="media-body">
-                        <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
-                        <h5 class="mt-0">Start Bootstrap</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        <!-- Nested Comment -->
-                        <div class="media d-flex mt-3">
-                           <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
-                           <div class="media-body">
-                              <div class="small text-muted">August 25, 2014 at 9:30 PM</div>
-                              <h5 class="mt-0">Nested Start Bootstrap</h5>
-                              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                           </div>
+                  <?php foreach ($comments as $comment) : ?>
+                     <!-- Comment -->
+                     <div class="media d-flex">
+                        <img class="align-self-start me-3" src="http://placehold.it/64x64" alt="">
+                        <div class="media-body">
+                           <div class="small text-muted"><?php echo date('d-m-Y H:i:s', strtotime($comment->date)); ?></div>
+                           <h5 class="mt-0"><?php echo $comment->author; ?></h5>
+                           <?php echo $comment->body; ?>
                         </div>
-                        <!-- End Nested Comment -->
                      </div>
-                  </div>
+                     <hr>
+                  <?php endforeach; ?>
                </div>
             </div>
             <!-- Nested row for non-featured blog posts-->

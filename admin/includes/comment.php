@@ -3,12 +3,12 @@
 class Comment extends Db_object
 {
    protected static $db_table = "comments";
-   protected static $db_table_fields = array('id', 'photo_id', 'author', 'body');
+   protected static $db_table_fields = array('id', 'photo_id', 'author', 'body', 'date');
    public $id;
    public $photo_id;
    public $author;
    public $body;
-   public $last_name;
+   public $date;
 
 
    public static function create_comment($photo_id, $author = "Test", $body = "")
@@ -19,6 +19,7 @@ class Comment extends Db_object
          $comment->photo_id = (int)$photo_id;
          $comment->author = $author;
          $comment->body = $body;
+         $comment->date = date('Y-m-d H:i:s');
 
          return $comment;
       } else {
@@ -26,11 +27,12 @@ class Comment extends Db_object
       }
    }
 
+
    public static function find_the_comments($photo_id = 0)
    {
       global $database;
 
-      $sql = "SELECT * FROM " . self::$db_table . "WHERE photo_id = " . $database->escape_string($photo_id) . "ORDER BY photo_id ASC";
+      $sql = "SELECT * FROM " . self::$db_table . " WHERE photo_id =" . $database->escape_string($photo_id) . " ORDER BY photo_id ASC";
 
       return self::find_by_query($sql);
    }

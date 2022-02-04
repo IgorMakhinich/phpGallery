@@ -3,7 +3,7 @@
 class Photo extends Db_object
 {
    protected static $db_table = "photos";
-   protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size');
+   protected static $db_table_fields = array('id', 'title', 'caption', 'description', 'filename', 'alternate_text', 'type', 'size', 'date');
    public $id;
    public $title;
    public $caption;
@@ -12,6 +12,7 @@ class Photo extends Db_object
    public $alternate_text;
    public $type;
    public $size;
+   public $date;
 
    public $tmp_path;
    public $upload_directory = "images";
