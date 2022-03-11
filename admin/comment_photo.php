@@ -22,7 +22,6 @@ $comments = Comment::find_the_comments($_GET['id']);
       <main>
          <div class="container-fluid px-4">
             <h1 class="mt-4">Comment by photo</h1>
-            <a href="add_user.php" class="btn btn-primary">Add Comment</a>
             <div class="col-md-12">
                <table class="table table-hover">
                   <thad>

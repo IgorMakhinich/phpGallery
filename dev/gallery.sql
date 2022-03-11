@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 4.9.10
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Фев 04 2022 г., 12:01
+-- Хост: localhost:3306
+-- Время создания: Мар 11 2022 г., 18:01
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
--- Версия PHP: 5.6.40-57+ubuntu18.04.1+deb.sury.org+1
+-- Версия PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `photo_id`, `author`, `body`, `date`) VALUES
 (15, 7, '123', '123', '2022-02-04 11:46:36'),
 (17, 6, '123', '123', '2022-02-04 11:54:23'),
-(18, 8, '345', 'ytwsdfsfdg  sfdgs dfg', '2022-02-04 11:54:35');
+(18, 8, '345', 'ytwsdfsfdg  sfdgs dfg', '2022-02-04 11:54:35'),
+(0, 6, 'Анчоус', 'test', '2022-03-11 16:26:11');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,7 @@ CREATE TABLE `photos` (
   `alternate_text` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
-  `date` datetime NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -68,9 +69,9 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `date`) VALUES
-(6, '3', '123', '<p>123456</p>', 'images-3.jpg', '321', 'image/jpeg', 18096, '0000-00-00 00:00:00'),
-(7, 'car', '', '', 'f0ea1940-cdac-42c1-9651-8176612b6d11_dacia_sandero_stepway_2013_9.jpg', '', 'image/jpeg', 35377, '0000-00-00 00:00:00'),
-(8, 'Car', '', '', 'f0ea1940-cdac-42c1-9651-8176612b6d11_dacia_sandero_stepway_2013_31.jpg', '', 'image/jpeg', 30533, '0000-00-00 00:00:00');
+(6, '3 title new', '3 caption new', '<p>test</p>\r\n', 'images-3.jpg', '3 alternate text new', 'image/jpeg', 18096, '2022-02-09'),
+(10, 'img37', 'caption37', '<p>descr37</p>\r\n', 'images-37.jpg', 'alt37', 'image/jpeg', 20381, '2022-02-10'),
+(11, 'honda', '', '', 'images-8.jpg', '', 'image/jpeg', 20810, '2022-03-11');
 
 -- --------------------------------------------------------
 
@@ -92,25 +93,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
-(2, 'user', '123', 'Jhon', 'Doe', 'maxion_74956.jpg'),
-(3, 'test', '123', 'test', 'test', 'Asset 8.jpg');
+(7, 'test', '123', 'test', 'test', 'images-1.jpg'),
+(15, 'User3', '123', 'User', 'Three', 'image-1.jpg');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `photo_id` (`photo_id`);
-
---
 -- Индексы таблицы `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -123,22 +117,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `comments`
---
-ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
