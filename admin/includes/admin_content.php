@@ -106,7 +106,7 @@
                            <i class="fa fa-comment fa-5x"></i>
                         </div>
                         <div class="col-sm-9 text-end">
-                           <div class="display-5">9</div>
+                           <div class="display-5"><?php echo Comment::count_all(); ?></div>
                            <div>Comments</div>
                         </div>
                      </div>

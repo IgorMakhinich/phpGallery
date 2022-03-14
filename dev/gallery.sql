@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Мар 11 2022 г., 18:01
+-- Время создания: Мар 14 2022 г., 19:09
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версия PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -41,10 +41,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `photo_id`, `author`, `body`, `date`) VALUES
-(15, 7, '123', '123', '2022-02-04 11:46:36'),
-(17, 6, '123', '123', '2022-02-04 11:54:23'),
-(18, 8, '345', 'ytwsdfsfdg  sfdgs dfg', '2022-02-04 11:54:35'),
-(0, 6, 'Анчоус', 'test', '2022-03-11 16:26:11');
+(0, 12, 'Анчоус', 'Comment from Anchovas', '2022-03-14 19:27:24');
 
 -- --------------------------------------------------------
 
@@ -69,9 +66,7 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `date`) VALUES
-(6, '3 title new', '3 caption new', '<p>test</p>\r\n', 'images-3.jpg', '3 alternate text new', 'image/jpeg', 18096, '2022-02-09'),
-(10, 'img37', 'caption37', '<p>descr37</p>\r\n', 'images-37.jpg', 'alt37', 'image/jpeg', 20381, '2022-02-10'),
-(11, 'honda', '', '', 'images-8.jpg', '', 'image/jpeg', 20810, '2022-03-11');
+(12, 'CAR', 'caption', '<p>dsecription</p>', 'images-5.jpg', 'alternate text', 'image/jpeg', 33192, '2022-03-14');
 
 -- --------------------------------------------------------
 
@@ -94,11 +89,17 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
 (7, 'test', '123', 'test', 'test', 'images-1.jpg'),
-(15, 'User3', '123', 'User', 'Three', 'image-1.jpg');
+(15, 'user', '123', 'User', 'Three', 'image-1.jpg');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `photos`
@@ -120,7 +121,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

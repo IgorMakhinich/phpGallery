@@ -34,7 +34,7 @@
                               <?php 
                                  $photo = Photo::find_by_id($comment->photo_id);
                               ?>
-                              <a href ="edit_photo.php?id=<?php echo $photo->id; ?>">
+                              <a href ="edit_photo.php?id=<?php echo $comment->photo_id; ?>">
                                  <img class="admin-user-thumbnail user_image" src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>">
                               </a>
                            </td>
