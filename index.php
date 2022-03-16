@@ -4,9 +4,13 @@
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 $items_per_page = 4;
 $items_total_count = Photo::count_all();
+$paginate = new Paginate($page, $items_per_page, $items_total_count);
+
+$sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset()}";
+$photos = Photo::find_by_query($sql);
 ?>
 
-<!-- <?php $photos = Photo::find_all(); ?> -->
+
 
 <div class="row">
    <!-- Blog entries-->
@@ -19,6 +23,21 @@ $items_total_count = Photo::count_all();
                </a>
             </div>
          <?php endforeach; ?>
+      </div>
+      <div class="row">
+         <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+               <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+               </li>
+               <li class="page-item"><a class="page-link" href="#">1</a></li>
+               <li class="page-item"><a class="page-link" href="#">2</a></li>
+               <li class="page-item"><a class="page-link" href="#">3</a></li>
+               <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+               </li>
+            </ul>
+         </nav>
       </div>
    </div>
    <!-- Side widgets-->
