@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Мар 14 2022 г., 19:09
+-- Время создания: Мар 16 2022 г., 17:34
 -- Версия сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версия PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -66,7 +66,13 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `date`) VALUES
-(12, 'CAR', 'caption', '<p>dsecription</p>', 'images-5.jpg', 'alternate text', 'image/jpeg', 33192, '2022-03-14');
+(12, 'CAR', 'caption', '<p>dsecription</p>', 'images-5.jpg', 'alternate text', 'image/jpeg', 33192, '2022-03-14'),
+(13, 'car3', '', '', 'images-11.jpg', '', 'image/jpeg', 27916, '2022-03-16'),
+(14, 'car crash', '', '', 'images-15.jpg', '', 'image/jpeg', 28466, '2022-03-16'),
+(15, 'left door', '', '', 'images-12.jpg', '', 'image/jpeg', 18540, '2022-03-16'),
+(16, '', '', '', 'images-23.jpg', '', 'image/jpeg', 22792, '2022-03-16'),
+(17, '', '', '', 'images-42.jpg', '', 'image/jpeg', 22401, '2022-03-16'),
+(18, '', '', '', 'images-50.jpg', '', 'image/jpeg', 21652, '2022-03-16');
 
 -- --------------------------------------------------------
 
@@ -121,7 +127,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
