@@ -34,11 +34,12 @@ $comments = Comment::find_the_comments($photo->id);
       <div class="row">
          <!-- Featured blog post-->
          <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+            <a href="#!"><img class="card-img-top" src="admin/<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>" /></a>
             <div class="card-body">
-               <div class="small text-muted">January 1, 2021</div>
-               <h2 class="card-title">Featured Post Title</h2>
-               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+               <div class="small text-muted"><?php echo $photo->date; ?></div>
+               <h2 class="card-title"><?php echo $photo->title; ?></h2>
+               <p class="card-text"><?php echo $photo->caption; ?></p>
+               <p class="card-text"><?php echo $photo->description; ?></p>
                <a class="btn btn-primary" href="#!">Read more →</a>
             </div>
             <!-- Blog Comments -->
