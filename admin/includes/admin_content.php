@@ -74,7 +74,7 @@
                      </div>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
-                     <a class="small text-white stretched-link" href="#">Total Photos in Gallery</a>
+                     <a class="small text-white stretched-link" href="photos.php">Total Photos in Gallery</a>
                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
                </div>
@@ -93,7 +93,7 @@
                      </div>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
-                     <a class="small text-white stretched-link" href="#">Total Users</a>
+                     <a class="small text-white stretched-link" href="users.php">Total Users</a>
                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
                </div>
@@ -112,7 +112,7 @@
                      </div>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
-                     <a class="small text-white stretched-link" href="#">Total Comments</a>
+                     <a class="small text-white stretched-link" href="comments.php">Total Comments</a>
                      <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
                </div>

@@ -27,15 +27,24 @@ $photos = Photo::find_by_query($sql);
       <div class="row">
          <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-               <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-               </li>
-               <li class="page-item"><a class="page-link" href="#">1</a></li>
-               <li class="page-item"><a class="page-link" href="#">2</a></li>
-               <li class="page-item"><a class="page-link" href="#">3</a></li>
-               <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-               </li>
+               <?php
+               if ($paginate->page_total() > 1) {
+                  if ($paginate->has_previous()) {
+                     echo "<li class='page-item'><a class='page-link' href='index.php?page={$paginate->previous()}' tabindex='-1' aria-disabled='true'>Previous</a></li>";
+                  }
+                  for ($i = 1; $i <= $paginate->page_total(); $i++) {
+                     if ($paginate->current_page == $i) {
+                        echo "<li class='page-item active' aria-current='page'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
+                     } else {
+                        echo "<li class='page-item'><a class='page-link' href='index.php?page={$i}'>{$i}</a></li>";
+                     }
+                  }
+
+                  if ($paginate->has_next()) {
+                     echo "<li class='page-item'><a class='page-link' href='index.php?page={$paginate->next()}'>Next</a></li>";
+                  }
+               }
+               ?>
             </ul>
          </nav>
       </div>

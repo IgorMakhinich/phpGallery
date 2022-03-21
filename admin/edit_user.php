@@ -45,7 +45,10 @@ if (isset($_POST['update'])) {
 $message = "";
 ?>
 
+<?php include "includes/photo_library.php"; ?>
+
 <?php include "includes/top_nav.php"; ?>
+
 
 <div id="layoutSidenav">
    <?php include "includes/side_nav.php"; ?>
@@ -56,7 +59,7 @@ $message = "";
 
             <div class="row">
                <div class="col-md-6">
-                  <img src="<?php echo $user->image_path_placeholder(); ?>" alt="" class="img-responsive user_image">
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#photo-library"><img src="<?php echo $user->image_path_placeholder(); ?>" alt="" class="img-responsive user_image"></a>
                </div>
                <div class="col-md-6">
                   <form action="" method="POST" enctype="multipart/form-data">
