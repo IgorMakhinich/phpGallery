@@ -42,3 +42,31 @@
    background-color: #ddd;
    padding: 10px;
 }
+
+/***** Modal gallery *****/
+
+.modal-dialog {
+   max-width: 90% !important;
+}
+
+.modal-body {
+   padding: 10;
+   overflow: auto;
+   height: 500px !important;
+   min-height: 300px !important;
+}
+
+.modal_thumbnails {
+   margin-top: 10px;
+   width: 150px;
+   height: 100px !important;
+}
+
+#set_user_image {
+   margin: 10px;
+}
+
+
+#modal_sidebar {
+   position: fixed !important;
+}

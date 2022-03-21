@@ -1,4 +1,5 @@
 <?php include "includes/header.php"; ?>
+<?php include "includes/photo_library.php"; ?>
 
 <?php if (!$session->is_signed_in()) {
    redirect('login.php');
@@ -33,7 +34,7 @@ if (isset($_POST['update'])) {
       if ($user->save()) {
          $message = "User edited succesfully";
       } else {
-         // $message = join("<br>" . $user->errors);
+         $message = join("<br>" . $user->errors);
       }
    }
 }
@@ -45,7 +46,6 @@ if (isset($_POST['update'])) {
 $message = "";
 ?>
 
-<?php include "includes/photo_library.php"; ?>
 
 <?php include "includes/top_nav.php"; ?>
 
