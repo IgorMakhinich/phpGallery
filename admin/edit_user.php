@@ -34,7 +34,7 @@ if (isset($_POST['update'])) {
       if ($user->save()) {
          $message = "User edited succesfully";
       } else {
-         $message = join("<br>" . $user->errors);
+         // $message = join("<br>" . $user->errors);
       }
    }
 }
@@ -58,7 +58,7 @@ $message = "";
             <h1 class="mt-4">Edit User</h1>
 
             <div class="row">
-               <div class="col-md-6">
+               <div class="col-md-6 user_image_box">
                   <a href="#" data-bs-toggle="modal" data-bs-target="#photo-library"><img src="<?php echo $user->image_path_placeholder(); ?>" alt="" class="img-responsive user_image"></a>
                </div>
                <div class="col-md-6">
@@ -83,7 +83,7 @@ $message = "";
                         <input type="password" name="password" class="form-control" value="<?php echo $user->password; ?>" required>
                      </div>
                      <div class="info-box-update">
-                        <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger float-start mt-2">Delete</a>
+                        <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger float-start mt-2">Delete</a>
                         <input type="submit" name="update" value="update" class="btn btn-primary float-end mt-2">
                         <span class="float-start"><?php echo $message; ?></span>
                      </div>

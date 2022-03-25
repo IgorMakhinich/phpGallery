@@ -61,10 +61,9 @@ class User extends Db_object
          return false;
       }
       if (move_uploaded_file($this->tmp_path, $target_path)) {
-         if ($this->id){
+         if ($this->id) {
             $this->update();
-         }
-         elseif ($this->create()) {
+         } elseif ($this->create()) {
             unset($this->tmp_path);
             return true;
          }
@@ -72,5 +71,21 @@ class User extends Db_object
          $this->erros[] = "The file directory probably does not have permission";
          return false;
       }
+   }
+
+   public function ajax_save_user_image($user_image, $user_id)
+   {
+      global $database;
+
+      $user_image = $database->escape_string($user_image);
+      $user_id = $database->escape_string($user_id);
+
+      $this->user_image = $user_image;
+      $this->id = $user_id;
+      
+      $sql = "UPDATE " . self::$db_table . " SET user_image = '{$this->user_image}' WHERE id = {$this->id}";
+      $update_image = $database->query($sql);
+
+      echo $this->image_path_placeholder();
    }
 }

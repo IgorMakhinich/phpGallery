@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Час створення: Бер 21 2022 р., 18:16
+-- Час створення: Бер 25 2022 р., 15:22
 -- Версія сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версія PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -101,8 +101,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
-(7, 'test', '123', 'test', 'test', 'test.jpg'),
-(15, 'user', '123', 'User', 'Three', 'user.jpg');
+(7, 'user1', '123', 'user', 'userovich', 'images-15.jpg'),
+(15, 'user2', '456', 'user2', 'user2ovich', 'images-38.jpg');
 
 --
 -- Індекси збережених таблиць

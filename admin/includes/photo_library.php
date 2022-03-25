@@ -37,7 +37,7 @@
          <div class="modal-footer">
             <div class="row">
                <!--Closes Modal-->
-               <button id="set_user_image" type="button" class="btn btn-primary" disabled="true" data-dismiss="modal">Apply Selection</button>
+               <button id="set_user_image" type="button" class="btn btn-primary" disabled="true" data-bs-dismiss="modal">Apply Selection</button>
             </div>
          </div>
       </div><!-- /.modal-content -->
