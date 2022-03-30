@@ -20,7 +20,7 @@ if (isset($_POST['add'])) {
 
       if ($user->save()) {
          $message = "User added succesfully";
-         header( "refresh:2;url=users.php" );
+         header("refresh:2;url=users.php");
       } else {
          $message = join("<br>" . $user->errors);
       }

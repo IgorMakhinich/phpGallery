@@ -12,6 +12,7 @@
       <main>
          <div class="container-fluid px-4">
             <h1 class="mt-4">Users</h1>
+            <p class="bg-success"><?php echo $message; ?></p>
             <a href="add_user.php" class="btn btn-primary">Add User</a>
             <div class="col-md-12">
                <table class="table table-hover">

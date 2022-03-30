@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Час створення: Бер 25 2022 р., 15:22
+-- Час створення: Бер 30 2022 р., 18:32
 -- Версія сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версія PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -101,8 +101,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
-(7, 'user1', '123', 'user', 'userovich', 'images-15.jpg'),
-(15, 'user2', '456', 'user2', 'user2ovich', 'images-38.jpg');
+(7, 'user1', '123', 'user', 'userovich', 'images-37.jpg'),
+(16, 'user2', '123', 'user2', 'user2ovich', 'images-5.jpg');
 
 --
 -- Індекси збережених таблиць
@@ -140,7 +140,7 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT для таблиці `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

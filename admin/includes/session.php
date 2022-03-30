@@ -1,5 +1,4 @@
 <?php
-
 class Session
 {
    private $signed_in = false;
@@ -7,7 +6,7 @@ class Session
    public $message;
    public $count;
 
-   
+
    function __construct()
    {
       session_start();
@@ -18,25 +17,25 @@ class Session
 
    public function visitor_count()
    {
-      if(isset($_SESSION['count'])){
+      if (isset($_SESSION['count'])) {
          return $this->count = $_SESSION['count']++;
       } else {
          return $_SESSION['count'] = 1;
       }
    }
 
-   public function mesage($msg="")
+   public function message($msg = "")
    {
-      if(!empty($msg)){
+      if (!empty($msg)) {
          $_SESSION['message'] = $msg;
       } else {
-         return $this->mesage;
+         return $this->message;
       }
    }
 
-   public function check_message()
+   private function check_message()
    {
-      if(isset($_SESSION['message'])){
+      if (isset($_SESSION['message'])) {
          $this->message = $_SESSION['message'];
          unset($_SESSION['message']);
       } else {
@@ -80,3 +79,4 @@ class Session
 }
 
 $session = new Session();
+$message = $session->message();

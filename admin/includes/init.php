@@ -1,4 +1,4 @@
-<?php
+<?php ob_start();
 
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 
