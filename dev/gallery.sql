@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Час створення: Бер 30 2022 р., 18:32
+-- Час створення: Квт 02 2022 р., 18:07
 -- Версія сервера: 10.1.48-MariaDB-0ubuntu0.18.04.1
 -- Версія PHP: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -36,13 +36,6 @@ CREATE TABLE `comments` (
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп даних таблиці `comments`
---
-
-INSERT INTO `comments` (`id`, `photo_id`, `author`, `body`, `date`) VALUES
-(0, 12, 'Анчоус', 'Comment from Anchovas', '2022-03-14 19:27:24');
-
 -- --------------------------------------------------------
 
 --
@@ -66,7 +59,6 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alternate_text`, `type`, `size`, `date`) VALUES
-(12, 'CAR', 'caption', '<p>dsecription</p>', 'images-5.jpg', 'alternate text', 'image/jpeg', 33192, '2022-03-14'),
 (13, 'car3', '', '', 'images-11.jpg', '', 'image/jpeg', 27916, '2022-03-16'),
 (14, 'car crash', '', '', 'images-15.jpg', '', 'image/jpeg', 28466, '2022-03-16'),
 (15, 'left door', '', '', 'images-12.jpg', '', 'image/jpeg', 18540, '2022-03-16'),
@@ -79,7 +71,10 @@ INSERT INTO `photos` (`id`, `title`, `caption`, `description`, `filename`, `alte
 (22, '40', '', '', 'images-40.jpg', '', 'image/jpeg', 24385, '2022-03-21'),
 (23, '39', '', '', 'images-39.jpg', '', 'image/jpeg', 24969, '2022-03-21'),
 (24, '38', '', '', 'images-38.jpg', '', 'image/jpeg', 21857, '2022-03-21'),
-(25, '37', '', '', 'images-37.jpg', '', 'image/jpeg', 20381, '2022-03-21');
+(25, '37', '', '', 'images-37.jpg', '', 'image/jpeg', 20381, '2022-03-21'),
+(26, '', '', '', 'images-17.jpg', '', 'image/jpeg', 22792, '2022-04-02'),
+(27, '', '', '', 'images-18.jpg', '', 'image/jpeg', 27595, '2022-04-02'),
+(28, '', '', '', 'images-19.jpg', '', 'image/jpeg', 22792, '2022-04-02');
 
 -- --------------------------------------------------------
 
@@ -102,7 +97,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `user_image`) VALUES
 (7, 'user1', '123', 'user', 'userovich', 'images-37.jpg'),
-(16, 'user2', '123', 'user2', 'user2ovich', 'images-5.jpg');
+(16, 'user2', '123', 'user2', 'user2ovich', 'images-5.jpg'),
+(21, 'user3', '123', 'user3', 'user3', 'images-44.jpg');
 
 --
 -- Індекси збережених таблиць
@@ -134,13 +130,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблиці `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT для таблиці `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
