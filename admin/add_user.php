@@ -17,6 +17,9 @@ if (isset($_POST['add'])) {
       $user->password = $_POST['password'];
       $user->set_file($_FILES['user_image']);
       $user->save_user_photo();
+      $session->message("The user {$user->first_name} has been added");
+      $user->save();
+      redirect("users.php");
 
       if ($user->save()) {
          $message = "User added succesfully";

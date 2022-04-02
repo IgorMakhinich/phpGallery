@@ -23,10 +23,12 @@ window.addEventListener('DOMContentLoaded', event => {
       });
    }
 
+   // SIdebar image
+
    const modalThumbnails = document.getElementsByClassName('modal_thumbnails');
-   if (modalThumbnails) {
-      const setUserImage = document.getElementById('set_user_image');
-      const userId = document.getElementById('user-id').href.split('=')[1];
+   if (modalThumbnails.length > 0) {
+      let setUserImage = document.getElementById('set_user_image');
+      let userId = document.getElementById('user-id').href.split('=')[1];
       let imageFile, photoId;
 
       for (i = 0; i < modalThumbnails.length; i++) {

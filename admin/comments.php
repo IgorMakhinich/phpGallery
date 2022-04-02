@@ -12,6 +12,7 @@
       <main>
          <div class="container-fluid px-4">
             <h1 class="mt-4">Comments</h1>
+            <p class="bg-success"><?php echo $message; ?></p>
             <div class="col-md-12">
                <table class="table table-hover">
                   <thad>
