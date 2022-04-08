@@ -69,4 +69,9 @@ window.addEventListener('DOMContentLoaded', event => {
          });
       });
    }
+
+      $(".delete_link").click(function (e) {
+         return confirm("Are you sure to delete?");
+      });
+      
 });

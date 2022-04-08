@@ -32,7 +32,7 @@
                         <tr>
                            <td><img class="admin-photo-thumbnail" src="<?php echo $photo->picture_path(); ?>" alt="<?php echo $photo->title; ?>">
                               <div class="action_links">
-                                 <a href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
+                                 <a class="delete_link" href="delete_photo.php?id=<?php echo $photo->id; ?>">Delete</a>
                                  <a href="edit_photo.php?id=<?php echo $photo->id; ?>">Edit</a>
                                  <a href="../photo.php?id=<?php echo $photo->id; ?>" target="_blank" rel="noopener noreferrer">View</a>
                               </div>
